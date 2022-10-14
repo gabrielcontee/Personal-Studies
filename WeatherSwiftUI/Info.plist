@@ -7,5 +7,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>WeatherAPIKey</key>
+	<string>e50b5b0f3b20a3369b54ee90ac63b521</string>
 </dict>
 </plist>

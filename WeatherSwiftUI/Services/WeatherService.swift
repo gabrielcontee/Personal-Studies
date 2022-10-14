@@ -13,7 +13,16 @@ enum RequestError: Error {
 
 class WeatherService {
 
-    private var apiKey: String { return "e50b5b0f3b20a3369b54ee90ac63b521" }
+    private var apiKey: String {
+
+        if let key = Bundle.main.object(forInfoDictionaryKey: "WeatherAPIKey") as? String {
+
+            return key
+        }
+
+        assertionFailure("Missing Weather API key")
+        return ""
+    }
 
     private let session = URLSession.shared
 
