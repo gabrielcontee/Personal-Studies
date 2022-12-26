@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0648817E2959E8A2005BE1F2 /* SearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648817D2959E8A2005BE1F2 /* SearchListView.swift */; };
+		064881802959E9D0005BE1F2 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648817F2959E9D0005BE1F2 /* SearchBar.swift */; };
 		0678D602294C70B00052E1D5 /* SwiftUI_RecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678D601294C70B00052E1D5 /* SwiftUI_RecipesApp.swift */; };
-		0678D604294C70B00052E1D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678D603294C70B00052E1D5 /* ContentView.swift */; };
+		0678D604294C70B00052E1D5 /* GroceriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678D603294C70B00052E1D5 /* GroceriesView.swift */; };
 		0678D606294C70B30052E1D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0678D605294C70B30052E1D5 /* Assets.xcassets */; };
 		0678D609294C70B30052E1D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0678D608294C70B30052E1D5 /* Preview Assets.xcassets */; };
 		0678D611294C71A40052E1D5 /* GroceriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678D610294C71A40052E1D5 /* GroceriesList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0648817D2959E8A2005BE1F2 /* SearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListView.swift; sourceTree = "<group>"; };
+		0648817F2959E9D0005BE1F2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0678D5FE294C70B00052E1D5 /* SwiftUI Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0678D601294C70B00052E1D5 /* SwiftUI_RecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_RecipesApp.swift; sourceTree = "<group>"; };
-		0678D603294C70B00052E1D5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0678D603294C70B00052E1D5 /* GroceriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesView.swift; sourceTree = "<group>"; };
 		0678D605294C70B30052E1D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0678D608294C70B30052E1D5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0678D610294C71A40052E1D5 /* GroceriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceriesList.swift; sourceTree = "<group>"; };
@@ -34,6 +38,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0648817C2959E885005BE1F2 /* SearchLists */ = {
+			isa = PBXGroup;
+			children = (
+				0648817D2959E8A2005BE1F2 /* SearchListView.swift */,
+				0648817F2959E9D0005BE1F2 /* SearchBar.swift */,
+			);
+			path = SearchLists;
+			sourceTree = "<group>";
+		};
 		0678D5F5294C70B00052E1D5 = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +66,7 @@
 		0678D600294C70B00052E1D5 /* SwiftUI Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				0648817C2959E885005BE1F2 /* SearchLists */,
 				0678D60F294C71800052E1D5 /* GroupedLists */,
 				0678D601294C70B00052E1D5 /* SwiftUI_RecipesApp.swift */,
 				0678D605294C70B30052E1D5 /* Assets.xcassets */,
@@ -72,7 +86,7 @@
 		0678D60F294C71800052E1D5 /* GroupedLists */ = {
 			isa = PBXGroup;
 			children = (
-				0678D603294C70B00052E1D5 /* ContentView.swift */,
+				0678D603294C70B00052E1D5 /* GroceriesView.swift */,
 				0678D610294C71A40052E1D5 /* GroceriesList.swift */,
 			);
 			path = GroupedLists;
@@ -148,7 +162,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0678D604294C70B00052E1D5 /* ContentView.swift in Sources */,
+				0648817E2959E8A2005BE1F2 /* SearchListView.swift in Sources */,
+				0678D604294C70B00052E1D5 /* GroceriesView.swift in Sources */,
+				064881802959E9D0005BE1F2 /* SearchBar.swift in Sources */,
 				0678D611294C71A40052E1D5 /* GroceriesList.swift in Sources */,
 				0678D602294C70B00052E1D5 /* SwiftUI_RecipesApp.swift in Sources */,
 			);
