@@ -12,7 +12,8 @@ struct SwiftUI_RecipesApp: App {
     var body: some Scene {
         WindowGroup {
             //GroceriesView()
-            SearchListView()
+            //SearchListView()
+            
         }
     }
 }
