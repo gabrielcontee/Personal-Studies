@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct BestCounterComposableApp: App {
 
-    let store = Store<AppState, AppAction>(initialValue: AppState(), reducer: AppReducer.appReducer)
+    let store = Store<AppState, AppAction>(initialValue: AppState(), reducer: AppReducer.createAppReducer())
 
     var body: some Scene {
         WindowGroup {

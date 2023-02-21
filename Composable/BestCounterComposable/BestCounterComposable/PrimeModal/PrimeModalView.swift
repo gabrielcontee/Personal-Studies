@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IsPrimeModalView: View {
+struct PrimeModalView: View {
 
     @ObservedObject var store: Store<AppState, AppAction>
 
@@ -50,7 +50,7 @@ struct IsPrimeModalView: View {
 
 struct IsPrimeModalView_Previews: PreviewProvider {
     static var previews: some View {
-        IsPrimeModalView(store: Store(initialValue: AppState(),
-                                      reducer: AppReducer.appReducer))
+        PrimeModalView(store: Store(initialValue: AppState(),
+                                      reducer: AppReducer.createAppReducer()))
     }
 }

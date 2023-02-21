@@ -38,7 +38,7 @@ struct CounterView: View {
             }
             Button {
                 Task {
-                    await self.simulatePrimeCalculation()
+                    await self.nextPrime(for: self.store.value.count)
                 }
             } label: {
                 Text("(FAKE REQUEST) What is the \(self.ordinal(self.store.value.count)) prime?")
@@ -49,7 +49,7 @@ struct CounterView: View {
                    onDismiss: {
                 self.isPrimeModalShown = false
             }) {
-                IsPrimeModalView(store: self.store)
+                PrimeModalView(store: self.store)
             }
             .alert(Text("The \(self.ordinal(self.store.value.count)) prime is \(self.alertNthPrime)"),
                    isPresented: self.$isAlertNthPrimeShown,
@@ -63,22 +63,24 @@ struct CounterView: View {
         return formatter.string(for: number) ?? ""
     }
 
-    private func simulatePrimeCalculation() async {
+    private func nextPrime(for number: Int) async {
 
-        self.isAlertNthPrimeDisabled = true
+        do {
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-
-            self.alertNthPrime = 12345
+            self.alertNthPrime = try await WolframAlphaResult.nthPrime(number)
             self.isAlertNthPrimeShown = true
-            self.isAlertNthPrimeDisabled = false
-        })
+        } catch {
+
+            print("error")
+        }
+
+        self.isAlertNthPrimeDisabled = false
     }
 }
 
 struct CounterView_Previews: PreviewProvider {
     static var previews: some View {
         CounterView(store: Store(initialValue: AppState(),
-                                 reducer: AppReducer.appReducer))
+                                 reducer: AppReducer.createAppReducer()))
     }
 }
