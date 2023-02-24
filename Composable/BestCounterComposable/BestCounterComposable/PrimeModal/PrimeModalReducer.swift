@@ -9,19 +9,15 @@ import Foundation
 
 struct PrimeModalReducer {
 
-    static func primeModalReducer(state: inout AppState, action: AppAction) {
+    func primeModalReducer(state: inout AppState, action: PrimeModalAction) {
 
         switch action {
 
-        case .primeModal(.saveFavoritePrimeTapped):
+        case .saveFavoritePrimeTapped:
             state.favoritePrimes.append(state.count)
-            state.activityFeed.append(.init(timestamp: Date(),
-                                           type: .addedFavoritePrime(state.count)))
-        case .primeModal(.removeFavoritePrimeTapped):
-            state.favoritePrimes.removeAll(where: { $0 == state.count })
-            state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(state.count)))
 
-        default: break
+        case .removeFavoritePrimeTapped:
+            state.favoritePrimes.removeAll(where: { $0 == state.count })
         }
     }
 }

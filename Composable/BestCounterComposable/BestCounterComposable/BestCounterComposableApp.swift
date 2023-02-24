@@ -10,7 +10,14 @@ import SwiftUI
 @main
 struct BestCounterComposableApp: App {
 
-    let store = Store<AppState, AppAction>(initialValue: AppState(), reducer: AppReducer.createAppReducer())
+    let store = Store<AppState, AppAction>(initialValue: AppState(),
+                                           reducer: StoreHelper.with(
+                                            AppReducer.createAppReducer(),
+                                            StoreHelper.compose(
+                                                AppReducer.logging,
+                                                AppReducer.activityFeed)
+                                           )
+    )
 
     var body: some Scene {
         WindowGroup {

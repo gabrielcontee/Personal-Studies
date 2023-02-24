@@ -9,16 +9,14 @@ import Foundation
 
 struct CounterReducer {
 
-    static func counterReducer(state: inout Int, action: AppAction) {
+    func counterReducer(state: inout Int, action: CounterAction) {
 
         switch action {
 
-        case .counter(.decreaseTapped):
+        case .decreaseTapped:
             state -= 1
-        case .counter(.increaseTapped):
+        case .increaseTapped:
             state += 1
-
-        default: break
         }
     }
 }

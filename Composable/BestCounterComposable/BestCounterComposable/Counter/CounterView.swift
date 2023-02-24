@@ -67,7 +67,7 @@ struct CounterView: View {
 
         do {
 
-            self.alertNthPrime = try await WolframAlphaResult.nthPrime(number)
+            self.alertNthPrime = try await WolframAlphaFetcher.nthPrime(number)
             self.isAlertNthPrimeShown = true
         } catch {
 

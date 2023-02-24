@@ -9,32 +9,14 @@ import Foundation
 
 struct FavoritePrimeReducer {
 
-    static func favoritePrimeReducer(state: inout FavoritePrimesState, action: AppAction) {
+    func favoritePrimeReducer(state: inout [Int], action: FavoritePrimesAction) {
 
         switch action {
 
-        case let .favorites(.deleteFavoritePrimes(indexSet)):
+        case let .deleteFavoritePrimes(indexSet):
             for index in indexSet {
-                state.favoritePrimes.removeAll(where: { $0 == index })
-                state.activityFeed.append(.init(timestamp: Date(),
-                                                     type: .removedFavoritePrime(index)))
+                state.removeAll(where: { $0 == index })
             }
-
-        default: break
-        }
-    }
-}
-
-extension AppState {
-
-    var favoritePrimeState: FavoritePrimesState {
-
-        get {
-            FavoritePrimesState(favoritePrimes: self.favoritePrimes,
-                                activityFeed: self.activityFeed)
-        } set {
-            self.favoritePrimes = newValue.favoritePrimes
-            self.activityFeed = newValue.activityFeed
         }
     }
 }

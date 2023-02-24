@@ -9,9 +9,7 @@ import Foundation
 
 struct WolframAlphaResult: Decodable {
 
-    private static var wolframAlphaApiKey = "6H69Q3-828TKQJ4EP"
-
-    let queryresult: QueryResult
+    public let queryresult: QueryResult
 
     struct QueryResult: Decodable {
         let pods: [Pod]
@@ -25,9 +23,16 @@ struct WolframAlphaResult: Decodable {
             }
         }
     }
+}
 
-    private static func wolframAlpha(query: String, callback: @escaping (WolframAlphaResult?) -> Void) -> Void {
+struct WolframAlphaFetcher {
+
+    private static var wolframAlphaApiKey = "9L6AQL-QGEYPJQ3RP"
+
+    private static func wolframAlpha(query: String) async throws -> [WolframAlphaResult]? {
+
         var components = URLComponents(string: "https://api.wolframalpha.com/v2/query")!
+
         components.queryItems = [
             URLQueryItem(name: "input", value: query),
             URLQueryItem(name: "format", value: "plaintext"),
@@ -35,31 +40,33 @@ struct WolframAlphaResult: Decodable {
             URLQueryItem(name: "appid", value: wolframAlphaApiKey),
         ]
 
-        URLSession.shared.dataTask(with: components.url(relativeTo: nil)!) { data, response, error in
-            callback(
-                data
-                    .flatMap { try? JSONDecoder().decode(WolframAlphaResult.self, from: $0) }
-            )
-        }
-        .resume()
-    }
+        let request = URLRequest(url: components.url!)
 
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else { throw WolframError.generic }
+
+        do {
+            return try JSONDecoder().decode([WolframAlphaResult].self, from: data)
+        } catch { return nil }
+    }
 
     static func nthPrime(_ n: Int) async throws -> Int {
 
         var number: Int?
 
-        await self.wolframAlpha(query: "prime \(n)") { result in
-            number = result
-                .flatMap {
-                    $0.queryresult
-                        .pods
-                        .first(where: { $0.primary == .some(true) })?
-                        .subpods
-                        .first?
-                        .plaintext
-                }.flatMap(Int.init)
-        }
+        let result = try await self.wolframAlpha(query: "prime \(n)")
+
+        number = result?.compactMap {
+            $0.queryresult
+                .pods
+                .first(where: { $0.primary == .some(true) })?
+                .subpods
+                .first?
+                .plaintext
+        }.first?
+         .flatMap(Int.init)
 
         guard let primeNumber = number else {
             throw WolframError.prime
@@ -70,8 +77,6 @@ struct WolframAlphaResult: Decodable {
 
     enum WolframError: Error {
         case prime
+        case generic
     }
 }
-
-
-

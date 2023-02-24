@@ -22,10 +22,9 @@ struct FavoritePrimesView: View {
             .onDelete { indexSet in
                 self.store.send(.primeModal(.removeFavoritePrimeTapped))
             }
-            .toolbar {
-                EditButton()
-            }
             .navigationTitle("Favorite Primes")
+        }.toolbar {
+            EditButton()
         }
     }
 }
