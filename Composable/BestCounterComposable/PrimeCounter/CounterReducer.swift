@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct CounterReducer {
+public struct CounterReducer {
 
-    func counterReducer(state: inout Int, action: CounterAction) {
+    public static func counterReducer(state: inout Int, action: CounterAction) {
 
         switch action {
 

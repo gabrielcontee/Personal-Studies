@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct BestCounterComposableApp: App {
@@ -14,8 +15,8 @@ struct BestCounterComposableApp: App {
                                            reducer: StoreHelper.with(
                                             AppReducer.createAppReducer(),
                                             StoreHelper.compose(
-                                                AppReducer.logging,
-                                                AppReducer.activityFeed)
+                                                StoreHelper.logging,
+                                                ContentView.activityFeed)
                                            )
     )
 

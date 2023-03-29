@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct PrimeModalReducer {
+public struct PrimeModalReducer {
 
-    func primeModalReducer(state: inout AppState, action: PrimeModalAction) {
+    public static func primeModalReducer(state: inout PrimeModalState, action: PrimeModalAction) {
 
         switch action {
 

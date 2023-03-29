@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import Combine
+import ComposableArchitecture
+import PrimeModal
 
 struct AppState {
 
@@ -30,6 +31,22 @@ struct AppState {
         enum ActivityType {
             case addedFavoritePrime(Int)
             case removedFavoritePrime(Int)
+        }
+    }
+}
+
+// Needed to expose PrimeModalState to the keypath
+extension AppState {
+    var primeModal: PrimeModalState {
+        get {
+            PrimeModalState(
+                count: self.count,
+                favoritePrimes: self.favoritePrimes
+            )
+        }
+        set {
+            self.count = newValue.count
+            self.favoritePrimes = newValue.favoritePrimes
         }
     }
 }

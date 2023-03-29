@@ -40,7 +40,7 @@ struct WolframAlphaFetcher {
             URLQueryItem(name: "appid", value: wolframAlphaApiKey),
         ]
 
-        let request = URLRequest(url: components.url!)
+        let request = URLRequest(url: components.url(relativeTo: nil)!)
 
         let (data, response) = try await URLSession.shared.data(for: request)
 

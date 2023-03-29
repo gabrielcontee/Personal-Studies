@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import PrimeCounter
+import FavoritePrimes
+import PrimeModal
 
 enum AppAction {
 

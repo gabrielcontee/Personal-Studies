@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct FavoritePrimeReducer {
+public struct FavoritePrimeReducer {
 
-    func favoritePrimeReducer(state: inout [Int], action: FavoritePrimesAction) {
+    public static func favoritePrimeReducer(state: inout [Int], action: FavoritePrimesAction) {
 
         switch action {
 
